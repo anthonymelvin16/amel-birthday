@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    background-color: #f4ece1; /* Warna kertas lama/krem */
+    background-image: radial-gradient(#dcd0c0 1px, transparent 1px);
+    background-size: 20px 20px; /* Efek bintik kertas */
+    font-family: 'Poppins', sans-serif;
+    padding: 40px 20px;
+}
+
+h1, h2 {
+    font-family: 'Dancing Script', cursive; /* Font tulisan tangan */
+    color: #8b5e3c;
+    font-size: 3rem;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-card {
+    background: #fff;
+    padding: 15px 15px 40px 15px; /* Bagian bawah lebih lebar buat teks */
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.2);
+    position: relative;
+    transition: transform 0.3s ease;
+    border: 1px solid #ddd;
+}
+
+/* Efek Isolasi/Tape di atas foto */
+.photo-card::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 30%;
+    width: 100px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.5); /* Warna isolasi transparan */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: sepia(0.2) contrast(1.1); /* Efek vintage dikit */
+}
+
+.photo-card p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: #555;
+    margin-top: 15px;
+}
+
+/* Bikin foto agak miring-miring acak biar kayak scrapbook asli */
+.photo-card:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.photo-card:nth-child(odd) {
+    transform: rotate(-2deg);
+}
+
+.photo-card:nth-child(3n) {
+    transform: rotate(1.5deg);
+}
+
+.photo-card:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    z-index: 10;
+    box-shadow: 10px 15px 30px rgba(0,0,0,0.3);
+}
+
+/* Tombol Surat Rahasia */
+#btn-surprise {
+    font-family: 'Poppins', sans-serif;
+    background: #8b5e3c;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+#secret-message {
+    background: #fffef0; /* Kertas surat */
+    border-left: 5px solid #8b5e3c;
+    padding: 30px;
+    max-width: 600px;
+    margin: 30px auto;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Styling Modal Spotify Look */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Gelap transparan */
+    z-index: 10001;
+    backdrop-filter: blur(5px); /* Efek blur di belakang modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #282828;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    animation: modalFadeIn 0.4s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.message-text {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.modal-btn {
+    background: #1DB954;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-btn:hover {
+    transform: scale(1.05);
+    background: #1ed760;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 24px;
+    color: #b3b3b3;
+    cursor: pointer;
+}
